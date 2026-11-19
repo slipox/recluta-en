@@ -1,0 +1,538 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-19T01:10:00-03:00",
+  "title": "Design System: Recluta EN",
+  "extensions": {
+    "colorMeta": {
+      "carrier-navy": {
+        "role": "primary",
+        "displayName": "Carrier Navy",
+        "canonical": "oklch(26.8% 0.052 259.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.052 259.0)",
+          "oklch(25.0% 0.052 259.0)",
+          "oklch(36.0% 0.052 259.0)",
+          "oklch(48.0% 0.052 259.0)",
+          "oklch(60.0% 0.052 259.0)",
+          "oklch(72.0% 0.052 259.0)",
+          "oklch(84.0% 0.052 259.0)",
+          "oklch(95.0% 0.052 259.0)"
+        ]
+      },
+      "navy-soft": {
+        "role": "neutral",
+        "displayName": "Navy Soft",
+        "canonical": "oklch(35.4% 0.067 257.2)",
+        "tonalRamp": [
+          "oklch(15.0% 0.067 257.2)",
+          "oklch(25.0% 0.067 257.2)",
+          "oklch(36.0% 0.067 257.2)",
+          "oklch(48.0% 0.067 257.2)",
+          "oklch(60.0% 0.067 257.2)",
+          "oklch(72.0% 0.067 257.2)",
+          "oklch(84.0% 0.067 257.2)",
+          "oklch(95.0% 0.067 257.2)"
+        ]
+      },
+      "carrier-red": {
+        "role": "primary",
+        "displayName": "Carrier Red",
+        "canonical": "oklch(53.4% 0.193 24.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.193 24.6)",
+          "oklch(25.0% 0.193 24.6)",
+          "oklch(36.0% 0.193 24.6)",
+          "oklch(48.0% 0.193 24.6)",
+          "oklch(60.0% 0.193 24.6)",
+          "oklch(72.0% 0.193 24.6)",
+          "oklch(84.0% 0.193 24.6)",
+          "oklch(95.0% 0.193 24.6)"
+        ]
+      },
+      "signal-red-light": {
+        "role": "secondary",
+        "displayName": "Signal Red Light",
+        "canonical": "oklch(69.0% 0.165 19.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.165 19.8)",
+          "oklch(25.0% 0.165 19.8)",
+          "oklch(36.0% 0.165 19.8)",
+          "oklch(48.0% 0.165 19.8)",
+          "oklch(60.0% 0.165 19.8)",
+          "oklch(72.0% 0.165 19.8)",
+          "oklch(84.0% 0.165 19.8)",
+          "oklch(95.0% 0.165 19.8)"
+        ]
+      },
+      "active-pink": {
+        "role": "secondary",
+        "displayName": "Active Pink",
+        "canonical": "oklch(83.2% 0.070 15.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.070 15.3)",
+          "oklch(25.0% 0.070 15.3)",
+          "oklch(36.0% 0.070 15.3)",
+          "oklch(48.0% 0.070 15.3)",
+          "oklch(60.0% 0.070 15.3)",
+          "oklch(72.0% 0.070 15.3)",
+          "oklch(84.0% 0.070 15.3)",
+          "oklch(95.0% 0.070 15.3)"
+        ]
+      },
+      "pure-white": {
+        "role": "neutral",
+        "displayName": "Pure White",
+        "canonical": "oklch(100.0% 0.000 89.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.000 89.9)",
+          "oklch(25.0% 0.000 89.9)",
+          "oklch(36.0% 0.000 89.9)",
+          "oklch(48.0% 0.000 89.9)",
+          "oklch(60.0% 0.000 89.9)",
+          "oklch(72.0% 0.000 89.9)",
+          "oklch(84.0% 0.000 89.9)",
+          "oklch(95.0% 0.000 89.9)"
+        ]
+      },
+      "white-hairline": {
+        "role": "neutral",
+        "displayName": "White Hairline",
+        "canonical": "rgba(255,255,255,0.2)",
+        "tonalRamp": [
+          "rgba(255,255,255,0.2)",
+          "rgba(255,255,255,0.2)",
+          "rgba(255,255,255,0.2)",
+          "rgba(255,255,255,0.2)",
+          "rgba(255,255,255,0.2)",
+          "rgba(255,255,255,0.2)",
+          "rgba(255,255,255,0.2)",
+          "rgba(255,255,255,0.2)"
+        ]
+      },
+      "white-divider": {
+        "role": "neutral",
+        "displayName": "White Divider",
+        "canonical": "rgba(255,255,255,0.35)",
+        "tonalRamp": [
+          "rgba(255,255,255,0.35)",
+          "rgba(255,255,255,0.35)",
+          "rgba(255,255,255,0.35)",
+          "rgba(255,255,255,0.35)",
+          "rgba(255,255,255,0.35)",
+          "rgba(255,255,255,0.35)",
+          "rgba(255,255,255,0.35)",
+          "rgba(255,255,255,0.35)"
+        ]
+      },
+      "white-idle": {
+        "role": "neutral",
+        "displayName": "White Idle",
+        "canonical": "rgba(255,255,255,0.78)",
+        "tonalRamp": [
+          "rgba(255,255,255,0.78)",
+          "rgba(255,255,255,0.78)",
+          "rgba(255,255,255,0.78)",
+          "rgba(255,255,255,0.78)",
+          "rgba(255,255,255,0.78)",
+          "rgba(255,255,255,0.78)",
+          "rgba(255,255,255,0.78)",
+          "rgba(255,255,255,0.78)"
+        ]
+      },
+      "navy-tint": {
+        "role": "neutral",
+        "displayName": "Navy Tint",
+        "canonical": "rgba(22,38,63,0.06)",
+        "tonalRamp": [
+          "rgba(22,38,63,0.06)",
+          "rgba(22,38,63,0.06)",
+          "rgba(22,38,63,0.06)",
+          "rgba(22,38,63,0.06)",
+          "rgba(22,38,63,0.06)",
+          "rgba(22,38,63,0.06)",
+          "rgba(22,38,63,0.06)",
+          "rgba(22,38,63,0.06)"
+        ]
+      },
+      "carbon": {
+        "role": "secondary",
+        "displayName": "Carbon",
+        "canonical": "oklch(36.4% 0.091 286.0)",
+        "tonalRamp": [
+          "oklch(15.0% 0.091 286.0)",
+          "oklch(25.0% 0.091 286.0)",
+          "oklch(36.0% 0.091 286.0)",
+          "oklch(48.0% 0.091 286.0)",
+          "oklch(60.0% 0.091 286.0)",
+          "oklch(72.0% 0.091 286.0)",
+          "oklch(84.0% 0.091 286.0)",
+          "oklch(95.0% 0.091 286.0)"
+        ]
+      },
+      "cool-paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "oklch(94.4% 0.008 253.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.008 253.9)",
+          "oklch(25.0% 0.008 253.9)",
+          "oklch(36.0% 0.008 253.9)",
+          "oklch(48.0% 0.008 253.9)",
+          "oklch(60.0% 0.008 253.9)",
+          "oklch(72.0% 0.008 253.9)",
+          "oklch(84.0% 0.008 253.9)",
+          "oklch(95.0% 0.008 253.9)"
+        ]
+      },
+      "cool-paper-2": {
+        "role": "neutral",
+        "displayName": "Cool Paper 2",
+        "canonical": "oklch(91.3% 0.014 254.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.014 254.6)",
+          "oklch(25.0% 0.014 254.6)",
+          "oklch(36.0% 0.014 254.6)",
+          "oklch(48.0% 0.014 254.6)",
+          "oklch(60.0% 0.014 254.6)",
+          "oklch(72.0% 0.014 254.6)",
+          "oklch(84.0% 0.014 254.6)",
+          "oklch(95.0% 0.014 254.6)"
+        ]
+      },
+      "coupon-stock": {
+        "role": "neutral",
+        "displayName": "Coupon Stock",
+        "canonical": "oklch(99.4% 0.007 88.6)",
+        "tonalRamp": [
+          "oklch(15.0% 0.007 88.6)",
+          "oklch(25.0% 0.007 88.6)",
+          "oklch(36.0% 0.007 88.6)",
+          "oklch(48.0% 0.007 88.6)",
+          "oklch(60.0% 0.007 88.6)",
+          "oklch(72.0% 0.007 88.6)",
+          "oklch(84.0% 0.007 88.6)",
+          "oklch(95.0% 0.007 88.6)"
+        ]
+      },
+      "hairline-rule": {
+        "role": "neutral",
+        "displayName": "Hairline Rule",
+        "canonical": "oklch(81.8% 0.022 88.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.022 88.7)",
+          "oklch(25.0% 0.022 88.7)",
+          "oklch(36.0% 0.022 88.7)",
+          "oklch(48.0% 0.022 88.7)",
+          "oklch(60.0% 0.022 88.7)",
+          "oklch(72.0% 0.022 88.7)",
+          "oklch(84.0% 0.022 88.7)",
+          "oklch(95.0% 0.022 88.7)"
+        ]
+      },
+      "validated-green": {
+        "role": "secondary",
+        "displayName": "Validated Green",
+        "canonical": "oklch(48.3% 0.090 141.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.090 141.8)",
+          "oklch(25.0% 0.090 141.8)",
+          "oklch(36.0% 0.090 141.8)",
+          "oklch(48.0% 0.090 141.8)",
+          "oklch(60.0% 0.090 141.8)",
+          "oklch(72.0% 0.090 141.8)",
+          "oklch(84.0% 0.090 141.8)",
+          "oklch(95.0% 0.090 141.8)"
+        ]
+      },
+      "mission-amber": {
+        "role": "secondary",
+        "displayName": "Mission Amber",
+        "canonical": "oklch(48.5% 0.106 59.3)",
+        "tonalRamp": [
+          "oklch(15.0% 0.106 59.3)",
+          "oklch(25.0% 0.106 59.3)",
+          "oklch(36.0% 0.106 59.3)",
+          "oklch(48.0% 0.106 59.3)",
+          "oklch(60.0% 0.106 59.3)",
+          "oklch(72.0% 0.106 59.3)",
+          "oklch(84.0% 0.106 59.3)",
+          "oklch(95.0% 0.106 59.3)"
+        ]
+      },
+      "basic-blue": {
+        "role": "secondary",
+        "displayName": "Basic Blue",
+        "canonical": "oklch(50.2% 0.080 233.7)",
+        "tonalRamp": [
+          "oklch(15.0% 0.080 233.7)",
+          "oklch(25.0% 0.080 233.7)",
+          "oklch(36.0% 0.080 233.7)",
+          "oklch(48.0% 0.080 233.7)",
+          "oklch(60.0% 0.080 233.7)",
+          "oklch(72.0% 0.080 233.7)",
+          "oklch(84.0% 0.080 233.7)",
+          "oklch(95.0% 0.080 233.7)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "canonical": "oklch(22.1% 0.006 106.9)",
+        "tonalRamp": [
+          "oklch(15.0% 0.006 106.9)",
+          "oklch(25.0% 0.006 106.9)",
+          "oklch(36.0% 0.006 106.9)",
+          "oklch(48.0% 0.006 106.9)",
+          "oklch(60.0% 0.006 106.9)",
+          "oklch(72.0% 0.006 106.9)",
+          "oklch(84.0% 0.006 106.9)",
+          "oklch(95.0% 0.006 106.9)"
+        ]
+      },
+      "muted-ink": {
+        "role": "neutral",
+        "displayName": "Muted Ink",
+        "canonical": "oklch(47.1% 0.013 89.8)",
+        "tonalRamp": [
+          "oklch(15.0% 0.013 89.8)",
+          "oklch(25.0% 0.013 89.8)",
+          "oklch(36.0% 0.013 89.8)",
+          "oklch(48.0% 0.013 89.8)",
+          "oklch(60.0% 0.013 89.8)",
+          "oklch(72.0% 0.013 89.8)",
+          "oklch(84.0% 0.013 89.8)",
+          "oklch(95.0% 0.013 89.8)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "label": {
+        "displayName": "Label — 12 px",
+        "purpose": "Códigos de cupón, fases y estados en mayúsculas."
+      },
+      "control": {
+        "displayName": "Control — 13 px",
+        "purpose": "Botones y metadatos compactos."
+      },
+      "bodySm": {
+        "displayName": "Body small — 14 px",
+        "purpose": "Procedimientos y notas."
+      },
+      "bodyMd": {
+        "displayName": "Body medium — 15 px",
+        "purpose": "Objetivo del vuelo y texto de apoyo."
+      },
+      "body": {
+        "displayName": "Body — 16 px",
+        "purpose": "Cuerpo principal en Barlow Condensed."
+      },
+      "stub": {
+        "displayName": "Stub — 17 px",
+        "purpose": "Texto del talón rojo."
+      },
+      "brand": {
+        "displayName": "Brand — 18 px",
+        "purpose": "Marca en la franja superior."
+      },
+      "section": {
+        "displayName": "Section — 19 px",
+        "purpose": "Títulos de sección."
+      },
+      "headline": {
+        "displayName": "Headline — 20 px",
+        "purpose": "Título de sesión."
+      },
+      "clock": {
+        "displayName": "Clock — 22 px",
+        "purpose": "Reloj de sesión."
+      },
+      "prompt": {
+        "displayName": "Prompt — 24 px",
+        "purpose": "Frases objetivo de los taladros."
+      },
+      "display": {
+        "displayName": "Display — 30 px",
+        "purpose": "Títulos de página."
+      },
+      "isoSign": {
+        "displayName": "ISO sign — 34 px",
+        "purpose": "Cartel de zona iso."
+      },
+      "isoClock": {
+        "displayName": "ISO clock — 40 px",
+        "purpose": "Reloj de zona iso."
+      },
+      "wideSign": {
+        "displayName": "Wide sign — 44 px",
+        "purpose": "Cartel de zona iso en pantallas anchas."
+      },
+      "mono": {
+        "displayName": "Mono — Courier New",
+        "purpose": "Cifras carbonadas, códigos y relojes."
+      }
+    },
+    "shadows": [
+      {
+        "name": "coupon-lift",
+        "value": "0 8px 20px rgba(22,38,63,.09), 0 1px 2px rgba(22,38,63,.12)",
+        "purpose": "Única sombra ambiental: el cupón activo sobre papel frío."
+      },
+      {
+        "name": "stub-press",
+        "value": "0 4px 12px rgba(196,38,46,.22)",
+        "purpose": "Talón rojo en reposo; se acentúa al pasar el cursor."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0, 0, .2, 1)",
+        "purpose": "Transiciones de estado y foco."
+      },
+      {
+        "name": "stub-shift",
+        "value": "transform 180ms ease-out, box-shadow 180ms ease-out",
+        "purpose": "El talón se levanta 1 px al pasar el cursor y baja al pulsarse."
+      },
+      {
+        "name": "clock-linear",
+        "value": "transform 200ms linear",
+        "purpose": "Barras de progreso y relojes de sesión/iso."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition-duration: 0.01ms !important; animation-duration: 0.01ms !important",
+        "purpose": "Respeta prefers-reduced-motion sin ocultar cambios de estado."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "base",
+        "value": "0px"
+      },
+      {
+        "name": "wide",
+        "value": "620px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Stub primary",
+      "kind": "button",
+      "refersTo": "stub-primary",
+      "description": "Talón rojo que inicia la sesión o el día mínimo.",
+      "html": "<button class=\"ds-stub-primary\" type=\"button\"><span class=\"ds-stub-action\">INICIAR SESIÓN</span><span class=\"ds-stub-meta\">60 MIN · LUN</span></button>",
+      "css": ".ds-stub-primary { min-height: 56px; width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 0 18px; border: 0; background: #C4262E; color: #FFFFFF; text-align: left; cursor: pointer; box-shadow: 0 4px 12px rgba(196,38,46,.22); transition: transform 180ms ease-out, box-shadow 180ms ease-out; } .ds-stub-primary:hover { transform: translateY(-1px); box-shadow: 0 7px 16px rgba(196,38,46,.28); } .ds-stub-primary:active { transform: translateY(1px); } .ds-stub-primary:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 2px; } .ds-stub-action { font: 700 17px/1.4 \"Barlow Condensed\", Arial Narrow, Helvetica Neue, Arial, sans-serif; letter-spacing: .04em; } .ds-stub-meta { font: 700 12px/1.4 \"Courier New\", monospace; opacity: .9; }"
+    },
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción confirmatoria sobre papel claro.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">GUARDAR</button>",
+      "css": ".ds-btn-primary { min-height: 44px; padding: 12px 16px; border: 1px solid #16263F; background: #16263F; color: #FFFDF8; cursor: pointer; font: 700 13px/1.4 \"Barlow Condensed\", Arial Narrow, Helvetica Neue, Arial, sans-serif; letter-spacing: .04em; transition: background 150ms ease-out, color 150ms ease-out; } .ds-btn-primary:hover { background: #C4262E; border-color: #C4262E; } .ds-btn-primary:focus-visible { outline: 3px solid #C4262E; outline-offset: 2px; }"
+    },
+    {
+      "name": "Quiet button",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Salida sin registro; baja jerarquía pero target táctil completo.",
+      "html": "<button class=\"ds-btn-quiet\" type=\"button\">ABANDONAR SIN REGISTRAR</button>",
+      "css": ".ds-btn-quiet { min-height: 44px; padding: 12px 16px; border: 1px solid #C9C3B4; background: transparent; color: #5E5B53; cursor: pointer; font: 700 13px/1.4 \"Barlow Condensed\", Arial Narrow, Helvetica Neue, Arial, sans-serif; letter-spacing: .04em; } .ds-btn-quiet:hover { background: #DCE3EC; color: #1B1B18; } .ds-btn-quiet:focus-visible { outline: 3px solid #C4262E; outline-offset: 2px; }"
+    },
+    {
+      "name": "Coupon input",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Campo de respuestas y comprobaciones, con borde de billete.",
+      "html": "<input class=\"ds-input\" type=\"text\" placeholder=\"Tu respuesta en inglés\" aria-label=\"Tu respuesta en inglés\">",
+      "css": ".ds-input { min-height: 44px; width: 100%; padding: 12px; border: 1px solid #16263F; background: #FFFDF8; color: #1B1B18; caret-color: #C4262E; font: 400 16px/1.4 \"Barlow Condensed\", Arial Narrow, Helvetica Neue, Arial, sans-serif; } .ds-input:focus-visible { outline: 3px solid #C4262E; outline-offset: 2px; }"
+    },
+    {
+      "name": "Flight coupon",
+      "kind": "card",
+      "refersTo": "coupon",
+      "description": "Billete activo con cabeza tabulada, tira de fase, campos y riel.",
+      "html": "<article class=\"ds-coupon\"><header class=\"ds-coupon-head\"><span class=\"ds-coupon-code\">VUELO 07</span><span class=\"ds-coupon-phase\">MISIÓN</span><span class=\"ds-coupon-seq\">LEG 07 / 10</span></header><div class=\"ds-coupon-stripe\"></div><div class=\"ds-coupon-body\"><p class=\"ds-coupon-goal\">Transacciones: comida, direcciones y médico.</p><div class=\"ds-rail\"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></div></article>",
+      "css": ".ds-coupon { background: #FFFDF8; border: 1px solid #C9C3B4; box-shadow: 0 8px 20px rgba(22,38,63,.09), 0 1px 2px rgba(22,38,63,.12); } .ds-coupon-head { display: flex; align-items: center; min-height: 50px; border-bottom: 1px solid #C9C3B4; } .ds-coupon-code { padding: 0 12px; background: #16263F; color: #FFFDF8; font: 700 13px/1.4 \"Barlow Condensed\", Arial Narrow, Helvetica Neue, Arial, sans-serif; } .ds-coupon-phase { flex: 1; padding: 0 12px; color: #16263F; font: 700 13px/1.4 \"Barlow Condensed\", Arial Narrow, Helvetica Neue, Arial, sans-serif; } .ds-coupon-seq { padding: 0 12px; color: #3B356B; font: 700 12px/1.4 \"Courier New\", monospace; } .ds-coupon-stripe { height: 6px; background: #8A4E12; } .ds-coupon-body { padding: 18px 16px 20px; } .ds-coupon-goal { margin: 0 0 16px; font: 400 15px/1.4 \"Barlow Condensed\", Arial Narrow, Helvetica Neue, Arial, sans-serif; } .ds-rail { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; } .ds-rail span { height: 10px; border: 1px solid #16263F; } .ds-rail span:nth-child(-n+4) { background: #16263F; }"
+    },
+    {
+      "name": "Status stamp",
+      "kind": "chip",
+      "refersTo": "coupon-stamp",
+      "description": "Sello girado que cancela o valida un cupón.",
+      "html": "<span class=\"ds-stamp\">COMPLETADO</span>",
+      "css": ".ds-stamp { display: inline-block; padding: 5px 10px; border: 3px double #3F6B3A; color: #3F6B3A; transform: rotate(-11deg); opacity: .85; font: 700 14px/1.4 \"Barlow Condensed\", Arial Narrow, Helvetica Neue, Arial, sans-serif; letter-spacing: .05em; }"
+    },
+    {
+      "name": "Day rail",
+      "kind": "custom",
+      "refersTo": "day-rail",
+      "description": "Riel de siete días: negro completo, violeta mínimo, vacío pendiente.",
+      "html": "<div class=\"ds-day-rail\" role=\"img\" aria-label=\"Últimos siete días: cuatro completados, uno mínimo, dos pendientes\"><span class=\"ds-day-done\"></span><span class=\"ds-day-done\"></span><span class=\"ds-day-done\"></span><span class=\"ds-day-done\"></span><span class=\"ds-day-min\"></span><span></span><span></span></div>",
+      "css": ".ds-day-rail { display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px; } .ds-day-rail span { height: 10px; border: 1px solid #16263F; background: transparent; } .ds-day-done { background: #16263F; } .ds-day-min { background: #3B356B; }"
+    },
+    {
+      "name": "Tab bar",
+      "kind": "nav",
+      "refersTo": "tabbar",
+      "description": "Navegación inferior de cinco destinos con foco blanco.",
+      "html": "<nav class=\"ds-tabbar\" aria-label=\"Navegación principal\"><button class=\"ds-tab is-active\" type=\"button\" aria-current=\"page\"><svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M3 10h14M10 3v14\"/></svg><span>HOY</span></button><button class=\"ds-tab\" type=\"button\"><svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M3 16L10 4l7 12M6 12h8\"/></svg><span>RUTA</span></button><button class=\"ds-tab\" type=\"button\"><svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><circle cx=\"10\" cy=\"10\" r=\"6\"/></svg><span>TALADROS</span></button><button class=\"ds-tab\" type=\"button\"><svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><rect x=\"4\" y=\"3\" width=\"12\" height=\"14\"/><path d=\"M7 7h6M7 10h6M7 13h4\"/></svg><span>REGISTRO</span></button><button class=\"ds-tab\" type=\"button\"><svg viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M10 2l6 3v5c0 4-2.5 6.5-6 8-3.5-1.5-6-4-6-8V5z\"/></svg><span>ZONA ISO</span></button></nav>",
+      "css": ".ds-tabbar { display: grid; grid-template-columns: repeat(5, 1fr); background: #16263F; border-top: 2px solid #C4262E; } .ds-tab { min-height: 64px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; border: 0; background: transparent; color: rgba(255,255,255,.78); cursor: pointer; font: 700 12px/1.4 \"Barlow Condensed\", Arial Narrow, Helvetica Neue, Arial, sans-serif; } .ds-tab svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.6; } .ds-tab.is-active { color: #FFFFFF; background: #243C5E; } .ds-tab.is-active svg { stroke: #F2B6B9; } .ds-tab:focus-visible { outline: 3px solid #FFFFFF; outline-offset: -3px; }"
+    },
+    {
+      "name": "Phase stripe",
+      "kind": "custom",
+      "refersTo": "phase-stripe",
+      "description": "Franja de seis píxeles con el color canónico de fase.",
+      "html": "<div class=\"ds-phase-stripe\" role=\"img\" aria-label=\"Fase Misión\"></div>",
+      "css": ".ds-phase-stripe { height: 6px; background: #8A4E12; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "La cartilla de vuelo que se cancela, no el panel de progreso que se llena",
+    "overview": "Una PWA de uso diario que se comporta como la cartilla de billetes de una aerolínea de los años 60: papel de cupón, tinta de carguero azul marino y rojo oficial, cifras en carbonado violeta, reglas de un cabello, cabezas de cupón tabuladas, perforaciones y sellos girados. La metáfora no es decorativa: el itinerario de diez etapas comunica secuencia, estado y consecuencia. Completar un día cancela un talón; nada desaparece.\n\nLa densidad es de herramienta de trabajo, no de landing. Una sola familia condensed hace todo el peso; la jerarquía se construye con peso, caso y reglas, nunca con tamaños dispares. En celular manda la claridad táctil: objetivo mínimo de 44 px, contraste verificado y foco visible incluso sobre el navy. Se rechazaron explícitamente los anillos de progreso, la gamificación de insignias y el papel crema templado por defecto: el fondo es frío (`#E9EDF2`) para no parecer una plantilla.",
+    "keyCharacteristics": [
+      "Cupones con talón, perforación y sello de estado (COMPLETADO / DÍA MÍNIMO); ANULADO aparece como estado de etapas pasadas.",
+      "Tira de color por fase y riel de siete días como único indicador de racha.",
+      "Un tamaño de letra por bloque; el peso y las mayúsculas hacen la jerarquía.",
+      "Tinta carbonada para cifras, rojo sólo para la acción y el estado activo.",
+      "Sin esquinas redondeadas: cada borde es una regla impresa."
+    ],
+    "rules": [
+      {
+        "name": "The Four-Leg Rule",
+        "body": "La tira de fase tiene exactamente cuatro valores — RECLUTA `#C4262E`, BÁSICO `#2E6B8A`, MISIÓN `#8A4E12`, DESPLIEGUE `#3F6B3A` — y se decodifica en el cupón activo. Nunca se inventa un color de fase nuevo.",
+        "section": "colors"
+      },
+      {
+        "name": "The Cold Paper Rule",
+        "body": "El fondo es frío. Sólo el cupón puede ser cálido; si una superficie nueva parece crema, está mal.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Size Per Block Rule",
+        "body": "Dentro de un bloque hay un solo tamaño de letra. El peso, el caso y la regla hacen la jerarquía; no se sube el punto para destacar.",
+        "section": "typography"
+      },
+      {
+        "name": "The Printed Edge Rule",
+        "body": "Un borde definido es suficiente para la mayoría de los bloques. La sombra es un privilegio del cupón, no un hábito.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar Barlow Condensed self-hosteada en `fonts/` y añadirla al caché del Service Worker.",
+      "Do mantener targets de al menos 44 px y foco visible sobre cualquier superficie.",
+      "Do derivar el estado del cupón de la evidencia guardada; una semana pasada sin pruebas se anula, no se finge completada."
+    ],
+    "donts": [
+      "Don't usar Arial Narrow como fuente principal: no existe en Android/iOS.",
+      "Don't poner rojo sobre navy ni texto secundario por debajo de 4,5:1.",
+      "Don't acreditar minutos por reloj que no haya corrido: cerrar una sesión requiere tiempo real transcurrido.",
+      "Don't acreditar minutos por abrir y guardar un taladro: los taladros registran aciertos y errores; los minutos los dan la sesión o un bloque iso completo.",
+      "Don't introducir esquinas redondeadas, anillos de progreso ni fondo crema."
+    ]
+  }
+}

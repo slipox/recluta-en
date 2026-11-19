@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#16263F">
+  <meta name="description" content="Recluta EN: entrenamiento de inglés estilo militar, 10 semanas, offline.">
+  <title>Recluta EN</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon-192.png" sizes="192x192">
+  <link rel="apple-touch-icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wallet">
+    <header class="topstrip">
+      <div class="topstrip__brand">
+        <span class="topstrip__mark" aria-hidden="true"></span>
+        <span>RECLUTA <b>EN</b></span>
+      </div>
+      <div class="topstrip__meta">
+        <span id="rank-label">SOLDADO</span>
+        <span class="topstrip__divider" aria-hidden="true"></span>
+        <span id="day-label">DÍA 01 / 70</span>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HOY -->
+      <section class="view" id="view-hoy" aria-label="Hoy" tabindex="-1">
+        <div class="coupon coupon--current" id="current-coupon">
+          <div class="coupon__head">
+            <span class="coupon__head-code" id="coupon-code">VUELO 01</span>
+            <span class="coupon__head-phase" id="coupon-phase">RECLUTAMIENTO</span>
+            <span class="coupon__head-seq" id="coupon-seq">LEG 01 / 10</span>
+          </div>
+          <div class="coupon__stripe" id="coupon-stripe" aria-hidden="true"></div>
+
+          <div class="coupon__body">
+            <div class="route">
+              <svg id="route-svg" viewBox="0 0 320 70" preserveAspectRatio="none" role="img" aria-label="Ruta de diez etapas"></svg>
+            </div>
+
+            <div class="fields" role="group" aria-label="Datos del vuelo">
+              <div class="field"><span class="field__label">FASE</span><span class="field__value" id="field-phase">RECLUTA</span></div>
+              <div class="field"><span class="field__label">DÍA</span><span class="field__value" id="field-day">01</span></div>
+              <div class="field"><span class="field__label">RACHA</span><span class="field__value" id="field-streak">0</span></div>
+              <div class="field"><span class="field__label">MIN</span><span class="field__value" id="field-minutes">0</span></div>
+            </div>
+
+            <p class="goal" id="coupon-goal">Saludar, identificarse, pedir ayuda y ejecutar 12 órdenes.</p>
+
+            <div class="rail" id="day-rail" role="img" aria-label="Estado de los últimos siete días"></div>
+            <p class="rail__legend">NEGRO = SESIÓN COMPLETADA · MORADO = DÍA MÍNIMO · VACÍO = PENDIENTE</p>
+          </div>
+
+          <div class="stub" id="stub">
+            <div class="stub__perforation" aria-hidden="true"></div>
+            <button class="stub__button" id="start-session" type="button">
+              <span class="stub__action">INICIAR SESIÓN</span>
+              <span class="stub__meta" id="stub-meta">1 H · HOY</span>
+            </button>
+            <button class="stub__mini" id="start-minimum" type="button">DÍA MÍNIMO · 5 MIN</button>
+          </div>
+        </div>
+
+        <div class="modebar" role="group" aria-label="Modalidad de entrenamiento">
+          <span class="modebar__label">MODALIDAD</span>
+          <div class="segmented" id="mode-selector"></div>
+          <p class="modebar__note" id="mode-note"></p>
+        </div>
+
+        <section class="session" id="session-panel" hidden aria-live="polite">
+          <div class="session__head">
+            <div>
+              <h2 id="session-title">Orden del día</h2>
+            </div>
+            <div class="session__clock" id="session-clock">00:00</div>
+          </div>
+          <div class="progress"><div class="progress__fill" id="session-progress"></div></div>
+          <ol class="session__steps" id="session-steps"></ol>
+          <div class="session__actions">
+            <button class="btn btn--primary" id="session-next" type="button">SIGUIENTE BLOQUE</button>
+            <button class="btn" id="session-finish" type="button">CERRAR SESIÓN</button>
+            <button class="btn btn--quiet" id="session-abandon" type="button">ABANDONAR SIN REGISTRAR</button>
+          </div>
+          <p class="session__hint">El reloj es real: antes del mínimo (5 min en día mínimo, 10 min en sesión) no se registra nada. Si cierras antes del final, se acreditan sólo los minutos reales y el día queda como mínimo.</p>
+        </section>
+
+        <section class="order" aria-label="Ritmo semanal">
+          <h2 class="section-title">Ritmo de la semana</h2>
+          <div class="rhythm" id="rhythm-list"></div>
+        </section>
+
+        <section class="remaining" aria-label="Etapas restantes">
+          <h2 class="section-title">En la cartilla</h2>
+          <div class="stack" id="stack-list"></div>
+        </section>
+      </section>
+
+      <!-- RUTA -->
+      <section class="view" id="view-ruta" hidden aria-label="Ruta" tabindex="-1">
+        <div class="page-head">
+          <h1>La ruta completa</h1>
+          <p>Diez etapas. Un cupón por semana. Al completarlo se cancela, nunca desaparece.</p>
+        </div>
+        <div class="legend-strip" aria-hidden="true">
+          <span><i class="swatch swatch--active"></i> EN CURSO</span>
+          <span><i class="swatch swatch--done"></i> COMPLETADO</span>
+          <span><i class="swatch swatch--future"></i> PENDIENTE</span>
+          <span><i class="swatch swatch--void"></i> ANULADO</span>
+        </div>
+        <div class="itinerary" id="itinerary-list"></div>
+      </section>
+
+      <!-- TALADROS -->
+      <section class="view" id="view-taladros" hidden aria-label="Taladros" tabindex="-1">
+        <div class="page-head">
+          <h1>Taladros</h1>
+          <p>Ocho formatos repetidos hasta la automatización. Elige uno y corre el cronómetro.</p>
+        </div>
+        <div class="drill-list" id="drill-list"></div>
+        <section class="pitfalls" aria-label="Errores frecuentes">
+          <h2 class="section-title">Interferencias del español</h2>
+          <div id="pitfall-list"></div>
+        </section>
+      </section>
+
+      <!-- REGISTRO -->
+      <section class="view" id="view-registro" hidden aria-label="Registro" tabindex="-1">
+        <div class="page-head">
+          <h1>Registro e inspección</h1>
+          <p>Lo que se mide mejora. Aquí vive la evidencia de tu progreso.</p>
+        </div>
+
+        <div class="stats" id="stats-grid"></div>
+
+        <section class="inspection" aria-label="Inspección del viernes">
+          <h2 class="section-title">Inspección del viernes</h2>
+          <p class="section-desc">Cinco barreras. Se aprueban todas o no se aprueba ninguna.</p>
+          <form id="inspection-form"></form>
+          <button class="btn btn--primary btn--wide" id="inspection-save" type="button">REGISTRAR INSPECCIÓN</button>
+          <p class="inspection__result" id="inspection-result" role="status"></p>
+        </section>
+
+        <section class="log" aria-label="Bitácora">
+          <h2 class="section-title">Bitácora</h2>
+          <div class="log__table" id="log-table"></div>
+        </section>
+
+        <section class="recordings" aria-label="Grabaciones">
+          <h2 class="section-title">Evidencia grabada</h2>
+          <div id="recordings-list"></div>
+        </section>
+
+        <section class="backup" aria-label="Copia de seguridad">
+          <h2 class="section-title">Tus datos</h2>
+          <p class="section-desc">Todo se guarda en este dispositivo. Exporta una copia antes de cambiar de celular.</p>
+          <div class="backup__actions">
+            <button class="btn" id="export-data" type="button">EXPORTAR JSON</button>
+            <button class="btn" id="import-button" type="button">IMPORTAR JSON</button>
+            <input id="import-file" type="file" accept="application/json" hidden>
+          </div>
+        </section>
+      </section>
+
+      <!-- ZONA ISO -->
+      <section class="view" id="view-zona-iso" hidden aria-label="Zona iso" tabindex="-1">
+        <div class="page-head">
+          <h1>Zona iso</h1>
+          <p>Aísla el español durante un bloque definido. No intentes vivir en inglés 24/7.</p>
+        </div>
+        <div class="iso-sign" aria-label="Cartel de la zona">
+          <span>ENGLISH ONLY</span>
+          <strong>NO SPANISH</strong>
+          <small>BLOQUE DE 30 A 180 MINUTOS</small>
+        </div>
+        <div class="iso-timer">
+          <div class="iso-timer__clock" id="iso-clock">30:00</div>
+          <div class="progress"><div class="progress__fill" id="iso-progress"></div></div>
+          <div class="iso-durations" role="group" aria-label="Duración del bloque">
+            <button type="button" data-iso-min="30" aria-pressed="true">30 MIN</button>
+            <button type="button" data-iso-min="60" aria-pressed="false">60 MIN</button>
+            <button type="button" data-iso-min="120" aria-pressed="false">120 MIN</button>
+            <button type="button" data-iso-min="180" aria-pressed="false">180 MIN</button>
+          </div>
+          <div class="iso-timer__actions">
+            <button class="btn btn--primary" id="iso-start" type="button">INICIAR BLOQUE</button>
+            <button class="btn" id="iso-reset" type="button">REINICIAR</button>
+          </div>
+        </div>
+        <section class="iso-rules" aria-label="Protocolo">
+          <h2 class="section-title">Protocolo</h2>
+          <ol class="numbered" id="iso-rules"></ol>
+        </section>
+        <section class="rescue" aria-label="Tarjetas de rescate">
+          <h2 class="section-title">Tarjetas de rescate</h2>
+          <p class="section-desc">Tres salidas permitidas. Si te quedas sin palabras, baja la complejidad: no cambies de idioma.</p>
+          <div id="rescue-list"></div>
+        </section>
+        <section class="contraband" aria-label="Contrabando">
+          <h2 class="section-title">Palabras de contrabando</h2>
+          <p class="section-desc">Anota aquí cada palabra española que aparezca. Tradúcela después del bloque y pásala a Anki.</p>
+          <form id="contraband-form">
+            <input id="contraband-input" type="text" placeholder="Palabra o frase en español" aria-label="Palabra o frase en español para la lista de contrabando" autocomplete="off">
+            <button class="btn btn--primary" type="submit">ANOTAR</button>
+          </form>
+          <ul class="contraband__list" id="contraband-list"></ul>
+        </section>
+      </section>
+
+      <!-- TALADRO EN CURSO -->
+      <section class="view" id="view-drill" hidden aria-label="Taladro en curso" tabindex="-1">
+        <button class="back" id="drill-back" type="button">← VOLVER</button>
+        <div class="page-head">
+          <h1 id="drill-title">Taladro</h1>
+          <p id="drill-purpose"></p>
+        </div>
+        <div class="drill-card">
+          <div class="drill-card__meta" id="drill-meta"></div>
+          <div class="drill-card__stage" id="drill-stage"></div>
+          <div class="drill-card__controls" id="drill-controls"></div>
+        </div>
+        <div class="drill-tally" id="drill-tally"></div>
+      </section>
+    </main>
+
+    <nav class="tabbar" aria-label="Navegación principal">
+      <button type="button" data-view="hoy" class="tabbar__tab is-active" aria-label="Hoy">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="3" width="16" height="14"/><path d="M7 3v14" stroke-dasharray="2 2"/></svg>HOY
+      </button>
+      <button type="button" data-view="ruta" class="tabbar__tab" aria-label="Ruta">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 15C5 5 15 5 18 15"/><circle cx="2" cy="15" r="1.5"/><circle cx="18" cy="15" r="1.5"/></svg>RUTA
+      </button>
+      <button type="button" data-view="taladros" class="tabbar__tab" aria-label="Taladros">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16"/><path d="M5 3v4M11 8v4M16 13v4"/></svg>TALADROS
+      </button>
+      <button type="button" data-view="registro" class="tabbar__tab" aria-label="Registro">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="3" width="16" height="14"/><path d="M2 8h16M8 8v9"/></svg>REGISTRO
+      </button>
+      <button type="button" data-view="zona-iso" class="tabbar__tab" aria-label="Zona iso">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M4 10h12"/></svg>ZONA ISO
+      </button>
+    </nav>
+
+    <div class="install" id="install-banner" hidden>
+      <div>
+        <strong>Instalar Recluta EN</strong>
+        <span>Se abre como app y funciona sin internet.</span>
+      </div>
+      <button class="btn btn--primary" id="install-button" type="button">INSTALAR</button>
+      <button class="install__close" id="install-close" type="button" aria-label="Cerrar aviso">×</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
