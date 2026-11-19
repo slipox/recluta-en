@@ -7,7 +7,7 @@ PWA instalable que convierte el plan de 10 semanas del informe *Entrena como sol
 - Itinerario de 10 etapas con estado: en curso, completado, cancelado, pendiente.
 - Sesiones de 1 h, 2 h y variante de fines de semana con día mínimo de 5 minutos.
 - Ocho taladros con contador de aciertos y errores (los minutos los acredita el reloj de la sesión, no el taladro).
-- Flashcards con repetición espaciada local (sin Anki ni cuenta externa).
+- Flashcards con repetición espaciada local y voz en inglés: al revelar se escucha la frase y se puede repetir con «ESCUCHAR» (sin Anki ni cuenta externa).
 - Dictado y shadowing con voz del dispositivo y grabación del micrófono.
 - Seis tarjetas de role-play con complicación aleatoria.
 - Bitácora, inspección del viernes con cinco barreras, rangos y copia de seguridad JSON.

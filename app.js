@@ -174,7 +174,15 @@
     }
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'en-US';
+    const voices = window.speechSynthesis.getVoices() || [];
+    const englishVoice = voices.find((v) => /^en([-_]|$)/i.test(v.lang)) ||
+      voices.find((v) => /english/i.test(v.name));
+    if (englishVoice) {
+      utterance.voice = englishVoice;
+      utterance.lang = englishVoice.lang;
+    } else {
+      utterance.lang = 'en-US';
+    }
     utterance.rate = 0.9;
     window.speechSynthesis.speak(utterance);
   }
@@ -448,8 +456,10 @@
         stage.innerHTML = '<p class="drill-prompt">' + escapeHtml(prompt.es) + '</p><p class="drill-sub">' + escapeHtml(prompt.tag) + '</p>';
         controls.innerHTML = '<button class="btn btn--primary" data-action="reveal">VER EN INGLÉS</button>';
       } else {
-        stage.innerHTML = '<p class="drill-prompt">' + escapeHtml(prompt.en) + '</p><p class="drill-sub">' + escapeHtml(prompt.es) + '</p>';
-        controls.innerHTML = '<button class="btn btn--primary" data-action="easy">FÁCIL</button><button class="btn" data-action="hard">DIFÍCIL</button>';
+        stage.innerHTML = '<p class="drill-prompt">' + escapeHtml(prompt.en) + '</p><p class="drill-sub">' + escapeHtml(prompt.es) + '</p>' +
+          '<p class="drill-sub">Escucha la pronunciación y repite en voz alta antes de calificar.</p>';
+        controls.innerHTML = '<button class="btn" data-action="speak">ESCUCHAR</button>' +
+          '<button class="btn btn--primary" data-action="easy">FÁCIL</button><button class="btn" data-action="hard">DIFÍCIL</button>';
       }
     } else if (info.kind === 'dictation' || info.kind === 'translate') {
       const source = info.kind === 'translate' ? prompt.split('|')[0] : 'Escucha y escribe la frase en inglés.';
@@ -554,8 +564,13 @@
     }
     if (action === 'hit') { drill.hits += 1; advanceDrill(); return; }
     if (action === 'error') { drill.errors += 1; advanceDrill(); return; }
-    if (action === 'speak') { speak(prompt); return; }
-    if (action === 'reveal') { drill.revealed = true; renderDrillStage(); return; }
+    if (action === 'speak') { speak(kind === 'srs' ? prompt.en : prompt); return; }
+    if (action === 'reveal') {
+      drill.revealed = true;
+      renderDrillStage();
+      speak(prompt.en); // El gesto de revelar autoriza la voz; así se oye la pronunciación.
+      return;
+    }
     if (action === 'easy' || action === 'hard') {
       gradeCard(prompt, action === 'easy');
       advanceDrill();

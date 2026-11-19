@@ -262,6 +262,7 @@ Esquinas cuadradas en todo el sistema (`border-radius: 0`). Las formas vienen de
 - **Do** usar Barlow Condensed self-hosteada en `fonts/` y añadirla al caché del Service Worker.
 - **Do** mantener targets de al menos 44 px y foco visible sobre cualquier superficie.
 - **Do** derivar el estado del cupón de la evidencia guardada; una semana pasada sin pruebas se anula, no se finge completada.
+- **Do** dar voz en inglés a las tarjetas SRS al revelarlas y ofrecer «ESCUCHAR» para repetir la pronunciación.
 
 ### Don't:
 - **Don't** usar Arial Narrow como fuente principal: no existe en Android/iOS.
