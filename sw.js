@@ -1,17 +1,27 @@
-/* Recluta EN — caché offline. Cache-first para todo el origen. */
-const CACHE = 'recluta-en-v3';
+/* Recluta EN - cache offline. Las URLs de assets llevan version para forzar la actualizacion. */
+const CACHE = 'recluta-en-v4';
+const VERSION = '1795091262795';
 const ASSETS = [
   './',
   './index.html',
-  './styles.css',
-  './data.js',
-  './app.js',
-  './manifest.webmanifest',
-  './icon-192.png',
-  './icon-512.png',
-  './fonts/barlow-condensed-400.woff2',
-  './fonts/barlow-condensed-600.woff2',
-  './fonts/barlow-condensed-700.woff2'
+  './index.html?v=' + VERSION,
+  './styles.css?v=' + VERSION,
+  './app.js?v=' + VERSION,
+  './data.js?v=' + VERSION,
+  './manifest.webmanifest?v=' + VERSION,
+  './fonts/barlow-condensed-400.woff2?v=' + VERSION,
+  './fonts/barlow-condensed-600.woff2?v=' + VERSION,
+  './fonts/barlow-condensed-700.woff2?v=' + VERSION,
+  './icons/icon-192.png?v=' + VERSION,
+  './icons/icon-256.png?v=' + VERSION,
+  './icons/icon-320.png?v=' + VERSION,
+  './icons/icon-384.png?v=' + VERSION,
+  './icons/icon-448.png?v=' + VERSION,
+  './icons/icon-512.png?v=' + VERSION,
+  './icons/icon-576.png?v=' + VERSION,
+  './icons/icon-640.png?v=' + VERSION,
+  './icons/icon-704.png?v=' + VERSION,
+  './icons/icon-768.png?v=' + VERSION,
 ];
 
 self.addEventListener('install', (event) => {
@@ -20,27 +30,20 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))))
+    caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))))
       .then(() => self.clients.claim())
   );
 });
 
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
-  if (url.origin !== self.location.origin) return;
-
+  if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) return;
   event.respondWith(
-    caches.match(event.request).then((cached) => {
-      const network = fetch(event.request).then((response) => {
-        if (response && response.status === 200) {
-          const copy = response.clone();
-          caches.open(CACHE).then((cache) => cache.put(event.request, copy));
-        }
-        return response;
-      }).catch(() => cached);
-      return cached || network;
-    })
+    caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
+      if (response.ok) {
+        const copy = response.clone();
+        caches.open(CACHE).then((cache) => cache.put(event.request, copy));
+      }
+      return response;
+    }))
   );
 });
