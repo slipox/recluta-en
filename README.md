@@ -29,8 +29,8 @@ Abre `http://localhost:3000`. El service worker solo se registra en `localhost` 
 
 Abre **https://slipox.github.io/recluta-en/** en el celular.
 
-1. Android/Chrome: menú → **Añadir a pantalla de inicio** o el aviso **INSTALAR**.
-2. iPhone/Safari: botón compartir → **Añadir a la pantalla de inicio**.
+1. Pulsa **INSTALAR APP** en la pestaña **Registro** (o el aviso **INSTALAR** si aparece). El botón siempre está disponible, aunque hayas cerrado el aviso antes.
+2. Si el navegador no ofrece el diálogo automático: Android/Chrome → menú ⋮ → **Instalar aplicación** o **Añadir a pantalla de inicio**; iPhone/Safari → botón compartir → **Añadir a la pantalla de inicio**.
 3. Carga la app una vez con internet: después funciona offline y guarda el progreso en el dispositivo.
 
 El sitio se publica desde `main` en el repo `slipox/recluta-en` con GitHub Pages. Netlify y Cloudflare Pages también servirían la carpeta tal cual.

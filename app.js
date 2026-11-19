@@ -915,22 +915,37 @@
       renderZonaIso();
     });
 
-    $('install-button').addEventListener('click', async () => {
-      if (!installPrompt) { toast('Usa el menú del navegador → «Añadir a pantalla de inicio».'); return; }
-      installPrompt.prompt();
-      await installPrompt.userChoice;
+    const installHelp = () => {
+      const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+        (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      toast(ios
+        ? 'iPhone/iPad: pulsa Compartir → «Añadir a pantalla de inicio».'
+        : 'Android/Chrome: pulsa ⋮ → «Instalar aplicación» o «Añadir a pantalla de inicio».');
+    };
+    const promptInstall = async () => {
+      if (!installPrompt) { installHelp(); return; }
+      try {
+        await installPrompt.prompt();
+        await installPrompt.userChoice;
+      } catch (err) {
+        installHelp();
+      }
       installPrompt = null;
       $('install-banner').hidden = true;
-    });
-    $('install-close').addEventListener('click', () => {
-      state.installDismissed = true;
-      saveState();
-      $('install-banner').hidden = true;
-    });
+    };
+    $('install-button').addEventListener('click', promptInstall);
+    $('install-always').addEventListener('click', promptInstall);
+    // Cerrar el aviso no desactiva la instalación: el botón de Registro sigue disponible.
+    $('install-close').addEventListener('click', () => { $('install-banner').hidden = true; });
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
       installPrompt = e;
-      if (!state.installDismissed) $('install-banner').hidden = false;
+      $('install-banner').hidden = false;
+    });
+    window.addEventListener('appinstalled', () => {
+      installPrompt = null;
+      $('install-banner').hidden = true;
+      toast('Recluta EN instalado. Ábrelo desde tu pantalla de inicio.');
     });
   }
 

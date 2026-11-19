@@ -1,6 +1,6 @@
 /* Recluta EN — caché offline. Las URLs de assets llevan versión para forzar la actualización. */
 const CACHE = 'recluta-en-v4';
-const VERSION = '1795091262795';
+const VERSION = '1795093219826';
 const ASSETS = [
   './',
   './index.html',
