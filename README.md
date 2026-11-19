@@ -25,15 +25,15 @@ Abre `http://localhost:3000`. El service worker solo se registra en `localhost` 
 
 ## Instalarla en el celular
 
-### Opción A: publicarla gratis (recomendada)
+### Opción A: URL pública (recomendada)
 
-1. Crea un repositorio en GitHub y sube esta carpeta.
-2. En GitHub: **Settings → Pages → Source: Deploy from a branch → main / root**.
-3. Abre la URL `https://TU-USUARIO.github.io/TU-REPO/` en el celular.
-4. Android/Chrome: menú → **Añadir a pantalla de inicio** o el aviso **INSTALAR**.
-5. iPhone/Safari: botón compartir → **Añadir a la pantalla de inicio**.
+Abre **https://slipox.github.io/recluta-en/** en el celular.
 
-Netlify y Cloudflare Pages también funcionan arrastrando la carpeta.
+1. Android/Chrome: menú → **Añadir a pantalla de inicio** o el aviso **INSTALAR**.
+2. iPhone/Safari: botón compartir → **Añadir a la pantalla de inicio**.
+3. Carga la app una vez con internet: después funciona offline y guarda el progreso en el dispositivo.
+
+El sitio se publica desde `main` en el repo `slipox/recluta-en` con GitHub Pages. Netlify y Cloudflare Pages también servirían la carpeta tal cual.
 
 ### Opción B: servirla desde la PC en la misma red
 
