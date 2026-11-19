@@ -1,5 +1,5 @@
 /* Recluta EN — caché offline. Cache-first para todo el origen. */
-const CACHE = 'recluta-en-v2';
+const CACHE = 'recluta-en-v3';
 const ASSETS = [
   './',
   './index.html',
