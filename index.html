@@ -6,10 +6,10 @@
   <meta name="theme-color" content="#16263F">
   <meta name="description" content="Recluta EN: entrenamiento de inglés estilo militar, 10 semanas, offline.">
   <title>Recluta EN</title>
-  <link rel="manifest" href="manifest.webmanifest?v=1795093219826">
-  <link rel="icon" href="icon-192.png?v=1795093219826" sizes="192x192">
-  <link rel="apple-touch-icon" href="icon-192.png?v=1795093219826">
-  <link rel="stylesheet" href="styles.css?v=1795093219826">
+  <link rel="manifest" href="manifest.webmanifest?v=1795566978132">
+  <link rel="icon" href="icon-192.png?v=1795566978132" sizes="192x192">
+  <link rel="apple-touch-icon" href="icon-192.png?v=1795566978132">
+  <link rel="stylesheet" href="styles.css?v=1795566978132">
 </head>
 <body>
   <div class="wallet">
@@ -224,6 +224,51 @@
         </div>
         <div class="drill-tally" id="drill-tally"></div>
       </section>
+
+      <!-- TRADUCIR FOTO -->
+      <section class="view" id="view-foto" hidden aria-label="Traducir foto" tabindex="-1">
+        <div class="page-head">
+          <h1>Foto → español</h1>
+          <p>Saca o elige una foto con texto en inglés. El texto se lee y se traduce en este dispositivo: sin subir nada a internet. La traducción usa un glosario táctico (frases del curso y vocabulario frecuente); lo desconocido se deja en inglés.</p>
+        </div>
+        <div class="photo-card">
+          <div class="photo-card__actions">
+            <button class="btn btn--primary" id="photo-camera-button" type="button">SACAR FOTO</button>
+            <input id="photo-camera" type="file" accept="image/*" capture="environment" hidden>
+            <button class="btn" id="photo-file-button" type="button">ELEGIR ARCHIVO</button>
+            <input id="photo-file" type="file" accept="image/*" hidden>
+            <button class="btn btn--quiet" id="photo-clear" type="button">LIMPIAR</button>
+          </div>
+          <p class="photo-status" id="photo-status" role="status" aria-live="polite">Listo. El modelo OCR se carga la primera vez (puede tardar un momento).</p>
+          <div class="progress" id="photo-progress-wrap" hidden><div class="progress__fill" id="photo-progress"></div></div>
+          <img id="photo-preview" class="photo-preview" alt="Vista previa de la foto seleccionada" hidden>
+        </div>
+        <section class="photo-result" aria-label="Texto detectado">
+          <div class="photo-result__head">
+            <h2 class="section-title">Texto detectado</h2>
+            <button class="btn btn--quiet" id="photo-copy-en" type="button">COPIAR INGLÉS</button>
+          </div>
+          <div class="ocr-output" id="photo-en" tabindex="0">El texto en inglés aparecerá aquí.</div>
+        </section>
+        <section class="photo-result" aria-label="Traducción al español">
+          <div class="photo-result__head">
+            <h2 class="section-title">Traducción al español</h2>
+            <button class="btn btn--quiet" id="photo-copy-es" type="button">COPIAR TRADUCCIÓN</button>
+          </div>
+          <div class="ocr-output ocr-output--es" id="photo-es" tabindex="0">La traducción aparecerá aquí.</div>
+          <p class="photo-note" id="photo-unknown" hidden></p>
+        </section>
+        <section class="photo-lexicon" aria-label="Añadir palabra al diccionario">
+          <h2 class="section-title">Diccionario de campaña</h2>
+          <p class="section-desc">Las palabras que falten se dejan en inglés. Añádelas aquí para que la próxima foto se traduzca mejor.</p>
+          <form id="photo-word-form">
+            <input id="photo-word-en" type="text" placeholder="Palabra en inglés" aria-label="Palabra en inglés" autocomplete="off">
+            <input id="photo-word-es" type="text" placeholder="Traducción al español" aria-label="Traducción al español" autocomplete="off">
+            <button class="btn btn--primary" type="submit">AÑADIR</button>
+          </form>
+          <ul class="photo-lexicon__list" id="photo-word-list"></ul>
+        </section>
+      </section>
     </main>
 
     <nav class="tabbar" aria-label="Navegación principal">
@@ -242,6 +287,9 @@
       <button type="button" data-view="zona-iso" class="tabbar__tab" aria-label="Zona iso">
         <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7"/><path d="M4 10h12"/></svg>ZONA ISO
       </button>
+      <button type="button" data-view="foto" class="tabbar__tab" aria-label="Traducir foto">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="4" width="16" height="12"/><circle cx="7" cy="8" r="2"/><path d="M4 15l4-4 3 3 2-2 3 3"/></svg>FOTO
+      </button>
     </nav>
 
     <div class="install" id="install-banner" hidden>
@@ -256,7 +304,9 @@
 
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
-  <script src="data.js?v=1795093219826"></script>
-  <script src="app.js?v=1795093219826"></script>
+  <script src="data.js?v=1795566978132"></script>
+  <script src="translate.js?v=1795566978132"></script>
+  <script src="ocr/tesseract.min.js?v=1795566978132"></script>
+  <script src="app.js?v=1795566978132"></script>
 </body>
 </html>

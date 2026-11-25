@@ -1,6 +1,6 @@
 /* Recluta EN — caché offline. Las URLs de assets llevan versión para forzar la actualización. */
-const CACHE = 'recluta-en-v4';
-const VERSION = '1795093219826';
+const CACHE = 'recluta-en-v7';
+const VERSION = '1795566978132';
 const ASSETS = [
   './',
   './index.html',
@@ -8,6 +8,11 @@ const ASSETS = [
   './styles.css?v=' + VERSION,
   './app.js?v=' + VERSION,
   './data.js?v=' + VERSION,
+  './translate.js?v=' + VERSION,
+  './ocr/tesseract.min.js?v=' + VERSION,
+  './ocr/worker.min.js?v=' + VERSION,
+  './ocr/tesseract-core-lstm.wasm.js',
+  './ocr/eng.traineddata.gz',
   './manifest.webmanifest?v=' + VERSION,
   './icon-192.png?v=' + VERSION,
   './icon-512.png?v=' + VERSION,

@@ -4,6 +4,7 @@
 
   const D = window.RECLUTA_DATA;
   const STORE_KEY = 'recluta-en-v1';
+  const ASSET_VERSION = '1795566978132';
   const $ = (id) => document.getElementById(id);
   const DAY_MS = 86400000;
 
@@ -16,6 +17,9 @@
   let mediaDb = null;
   let recordingUrls = [];
   let previousView = 'taladros';
+  let ocrWorker = null;
+  let ocrBusy = false;
+  let photoObjectUrl = null;
 
   /* ---------- Estado ---------- */
 
@@ -847,6 +851,164 @@
     updateIsoClock();
   }
 
+  /* ---------- FOTO → ESPAÑOL ---------- */
+
+  function photoStatus(message) {
+    $('photo-status').textContent = message;
+  }
+
+  function photoProgress(percent) {
+    const wrap = $('photo-progress-wrap');
+    if (typeof percent !== 'number' || percent <= 0 || percent >= 100) {
+      wrap.hidden = true;
+      return;
+    }
+    wrap.hidden = false;
+    $('photo-progress').style.width = Math.round(percent) + '%';
+  }
+
+  function ocrPaths() {
+    const base = 'ocr/';
+    const query = '?v=' + ASSET_VERSION;
+    return {
+      workerPath: base + 'worker.min.js' + query,
+      // Tesseract comprueba que la ruta del núcleo termina en «.js»; sin query.
+      corePath: base + 'tesseract-core-lstm.wasm.js',
+      langPath: base,
+      gzip: true,
+      cacheMethod: 'none',
+      logger: (msg) => {
+        if (msg && msg.status === 'recognizing text' && typeof msg.progress === 'number') {
+          photoProgress(msg.progress * 100);
+        }
+      }
+    };
+  }
+
+  async function getOcrWorker() {
+    if (ocrWorker) return ocrWorker;
+    if (!window.Tesseract || typeof window.Tesseract.createWorker !== 'function') {
+      throw new Error('El motor OCR no está disponible en este navegador.');
+    }
+    photoStatus('Preparando el motor OCR (primera vez, puede tardar)…');
+    const options = ocrPaths();
+    ocrWorker = await window.Tesseract.createWorker('eng', 1, options);
+    return ocrWorker;
+  }
+
+  async function processPhoto(file) {
+    if (!file || ocrBusy) return;
+    if (!file.type || file.type.indexOf('image/') !== 0) {
+      photoStatus('Ese archivo no es una imagen.');
+      return;
+    }
+
+    ocrBusy = true;
+    photoProgress(2);
+    try {
+      if (photoObjectUrl) URL.revokeObjectURL(photoObjectUrl);
+      photoObjectUrl = URL.createObjectURL(file);
+      const preview = $('photo-preview');
+      preview.src = photoObjectUrl;
+      preview.hidden = false;
+
+      $('photo-en').textContent = 'Leyendo la foto…';
+      $('photo-es').textContent = 'Traduciendo…';
+      $('photo-unknown').hidden = true;
+
+      const worker = await getOcrWorker();
+      photoStatus('Leyendo el texto de la foto…');
+      const result = await worker.recognize(file);
+      photoProgress(100);
+      const english = String((result && result.data && result.data.text) || '').trim();
+      if (!english) {
+        $('photo-en').textContent = 'No se encontró texto legible. Prueba con mejor luz o una foto más de cerca.';
+        $('photo-es').textContent = 'Sin texto que traducir.';
+        photoStatus('No se detectó texto.');
+        return;
+      }
+
+      $('photo-en').textContent = english;
+      const translator = window.RECLUTA_TRANSLATE;
+      if (!translator) {
+        $('photo-es').textContent = 'El traductor no está disponible.';
+        photoStatus('Texto leído. Falta el traductor.');
+        return;
+      }
+      const translation = translator.translateText(english);
+      $('photo-es').textContent = translation.text;
+      const unknown = translation.unknown || [];
+      if (unknown.length) {
+        $('photo-unknown').textContent = 'Palabras sin traducir: ' + unknown.join(', ') + '. Añádelas abajo para la próxima vez.';
+        $('photo-unknown').hidden = false;
+      }
+      photoStatus('Listo: ' + english.split(/\r?\n/).filter(Boolean).length + ' línea(s) leídas y traducidas en este dispositivo.');
+    } catch (err) {
+      const detail = err && err.message ? err.message : String(err);
+      photoStatus('No se pudo leer la foto: ' + detail);
+      $('photo-en').textContent = 'Error al leer la imagen.';
+      $('photo-es').textContent = 'Sin traducción.';
+    } finally {
+      photoProgress(null);
+      ocrBusy = false;
+    }
+  }
+
+  function clearPhoto() {
+    if (photoObjectUrl) {
+      URL.revokeObjectURL(photoObjectUrl);
+      photoObjectUrl = null;
+    }
+    $('photo-preview').src = '';
+    $('photo-preview').hidden = true;
+    $('photo-camera').value = '';
+    $('photo-file').value = '';
+    $('photo-en').textContent = 'El texto en inglés aparecerá aquí.';
+    $('photo-es').textContent = 'La traducción aparecerá aquí.';
+    $('photo-unknown').hidden = true;
+    photoProgress(null);
+    photoStatus('Listo. El modelo OCR se carga la primera vez (puede tardar un momento).');
+  }
+
+  async function copyText(id, label) {
+    const text = $(id).textContent.trim();
+    if (!text) return;
+    try {
+      await navigator.clipboard.writeText(text);
+      toast(label + ' copiado al portapapeles.');
+    } catch (err) {
+      toast('No se pudo copiar. Selecciona el texto y cópialo manualmente.');
+    }
+  }
+
+  function renderPhotoLexicon() {
+    const translator = window.RECLUTA_TRANSLATE;
+    const list = $('photo-word-list');
+    list.innerHTML = '';
+    if (!translator) return;
+    const words = translator.customWords();
+    const keys = Object.keys(words).sort();
+    if (!keys.length) {
+      const li = document.createElement('li');
+      li.textContent = 'Aún no hay palabras añadidas.';
+      list.appendChild(li);
+      return;
+    }
+    keys.forEach((key, index) => {
+      const li = document.createElement('li');
+      const label = document.createElement('span');
+      label.textContent = key + ' → ' + words[key];
+      const remove = document.createElement('button');
+      remove.type = 'button';
+      remove.textContent = 'QUITAR';
+      remove.setAttribute('aria-label', 'Quitar ' + key);
+      remove.dataset.word = key;
+      li.appendChild(label);
+      li.appendChild(remove);
+      list.appendChild(li);
+    });
+  }
+
   /* ---------- Eventos ---------- */
 
   function bindEvents() {
@@ -915,6 +1077,38 @@
       renderZonaIso();
     });
 
+    $('photo-camera-button').addEventListener('click', () => $('photo-camera').click());
+    $('photo-file-button').addEventListener('click', () => $('photo-file').click());
+    $('photo-camera').addEventListener('change', (e) => { if (e.target.files[0]) processPhoto(e.target.files[0]); });
+    $('photo-file').addEventListener('change', (e) => { if (e.target.files[0]) processPhoto(e.target.files[0]); });
+    $('photo-clear').addEventListener('click', clearPhoto);
+    $('photo-copy-en').addEventListener('click', () => copyText('photo-en', 'Texto en inglés'));
+    $('photo-copy-es').addEventListener('click', () => copyText('photo-es', 'Traducción'));
+    $('photo-word-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const en = $('photo-word-en').value.trim();
+      const es = $('photo-word-es').value.trim();
+      if (!en || !es) return;
+      const translator = window.RECLUTA_TRANSLATE;
+      if (translator && translator.addCustomWord(en, es)) {
+        $('photo-word-en').value = '';
+        $('photo-word-es').value = '';
+        renderPhotoLexicon();
+        toast('Palabra añadida al diccionario de campaña.');
+      } else {
+        toast('No se pudo guardar la palabra.');
+      }
+    });
+    $('photo-word-list').addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-word]');
+      if (!btn) return;
+      const translator = window.RECLUTA_TRANSLATE;
+      if (translator && translator.removeCustomWord(btn.dataset.word)) {
+        renderPhotoLexicon();
+        toast('Palabra quitada del diccionario.');
+      }
+    });
+
     const installHelp = () => {
       const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
         (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -956,6 +1150,7 @@
     if (!$('inspection-form').children.length) renderInspectionForm();
     renderRegistro();
     renderZonaIso();
+    renderPhotoLexicon();
   }
 
   function init() {

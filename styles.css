@@ -281,8 +281,28 @@ input, textarea { caret-color: var(--red); }
 .contraband__list li { font-size: 14px; padding: 8px 0; border-bottom: 1px solid var(--rule); display: flex; justify-content: space-between; gap: 10px; }
 .contraband__list button { border: 0; background: transparent; color: var(--red); cursor: pointer; font-size: 12px; min-height: 44px; padding: 0 4px; }
 
+/* Traducir foto */
+.photo-card { background: var(--coupon); border: 1px solid var(--rule); border-left: 5px solid var(--navy); padding: 16px; margin-bottom: 18px; }
+.photo-card__actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.photo-card__actions .btn { flex: 1 1 auto; text-align: center; }
+.photo-status { margin: 12px 0; font-size: 13px; color: var(--muted); }
+.photo-preview { display: block; width: 100%; max-height: 240px; object-fit: contain; background: var(--paper-2); border: 1px solid var(--rule); margin-top: 12px; }
+.photo-result { margin-bottom: 16px; }
+.photo-result__head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.ocr-output { background: var(--coupon); border: 1px solid var(--rule); border-left: 4px solid var(--navy); padding: 14px; font-size: 14px; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; min-height: 72px; }
+.ocr-output--es { border-left-color: var(--red); }
+.photo-note { font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+.photo-lexicon form { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; align-items: stretch; }
+.photo-lexicon input { min-height: 44px; padding: 0 10px; border: 1px solid var(--rule); background: var(--coupon); font-size: 14px; font-family: var(--sans); color: var(--ink); }
+.photo-lexicon__list { list-style: none; padding: 0; margin: 12px 0 0; }
+.photo-lexicon__list li { display: flex; justify-content: space-between; align-items: center; gap: 10px; font-size: 14px; padding: 6px 0; border-bottom: 1px solid var(--rule); }
+.photo-lexicon__list button { border: 0; background: transparent; color: var(--red); cursor: pointer; font-size: 12px; min-height: 44px; padding: 0 4px; }
+@media (max-width: 480px) {
+  .photo-lexicon form { grid-template-columns: 1fr; }
+}
+
 /* Navegación */
-.tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: grid; grid-template-columns: repeat(5, 1fr); height: calc(var(--tab-h) + env(safe-area-inset-bottom, 0px)); background: var(--navy); border-top: 2px solid var(--red); padding-bottom: env(safe-area-inset-bottom, 0px); }
+.tabbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; display: grid; grid-template-columns: repeat(6, 1fr); height: calc(var(--tab-h) + env(safe-area-inset-bottom, 0px)); background: var(--navy); border-top: 2px solid var(--red); padding-bottom: env(safe-area-inset-bottom, 0px); }
 .tabbar__tab { cursor: pointer; border: 0; background: transparent; color: rgba(255,255,255,.78); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; font-size: 12px; letter-spacing: .02em; font-weight: 700; min-height: 44px; }
 .tabbar__tab svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.6; }
 .tabbar__tab.is-active { color: #fff; background: var(--navy-soft); }

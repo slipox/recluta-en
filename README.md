@@ -12,6 +12,7 @@ PWA instalable que convierte el plan de 10 semanas del informe *Entrena como sol
 - Seis tarjetas de role-play con complicación aleatoria.
 - Bitácora, inspección del viernes con cinco barreras, rangos y copia de seguridad JSON.
 - Zona iso: cartel, bloques de 30/60/120/180 minutos, regla de los 5 segundos, tarjetas de rescate y lista de contrabando.
+- **Foto → español**: saca o elige una foto con texto en inglés; OCR con Tesseract empaquetado localmente y traducción inglés→español en el dispositivo. Sin red, sin subir imágenes y sin API keys. Las palabras desconocidas se dejan en inglés y puedes añadirlas al «diccionario de campaña».
 
 ## Verla en la PC
 
